@@ -11,14 +11,18 @@ class SaveRequestLog
 {
     public function __invoke(?Request $request)
     {
+        $a = 1;
+        $a = 1;
+
         try {
-            (new WebhooksRepository)->create([
+            \App\Models\Webhooks::create([
                 'method' => $request->getMethod(),
                 'header' => $this->defineHeader($request),
                 'body' => $this->defineBody($request),
                 'dt_chamada' => now()->format('Y-m-d H:i:s'),
             ]);
         } catch (Exception $exception) {
+            \dd($exception->getMessage());
         }
     }
 

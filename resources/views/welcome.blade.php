@@ -8,7 +8,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     <style>
@@ -18,9 +17,6 @@
     </style>
 </head>
 <body class="antialiased">
-<div id="app">
-    <example></example>
-    {{ $url }}
-</div>
+    <a href="{{ $url }}" target="blank">{{ $url }}</a>
 </body>
 </html>
