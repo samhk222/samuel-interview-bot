@@ -49,7 +49,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN if [ ${XDEBUG}] ; then \
+RUN if [ ${XDEBUG} ] ; then \
     apt-get install -y php-xdebug; \
 fi;
 
