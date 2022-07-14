@@ -14,6 +14,7 @@ class Webhooks extends Model
         'body',
         'referer',
         'dt_chamada',
+        'imported'
     ];
 
     protected $dates = ['dt_chamada'];
