@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaddyController;
 use Domain\Telegram\Actions\GenerateEndpointUrl;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -22,3 +23,4 @@ Route::get('/', function () {
 
     return view('welcome', compact('url'));
 });
+Route::get('/caddy-check', [CaddyController::class, 'check']);
