@@ -1,6 +1,6 @@
 {
     on_demand_tls {
-        ask http://laravel.test/caddy-check
+        ask http://0.0.0.0/caddy-check
     }
     local_certs
 }
