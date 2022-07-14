@@ -31,7 +31,8 @@ class NotificationClass
         switch ($text) {
             case TextConstants::get("START"):
                 return [
-                    WelcomeNotification::class
+                    WelcomeNotification::class,
+                    WelcomeNotification::class,
                 ];
             case TextConstants::get("SKILLS"):
                 return [

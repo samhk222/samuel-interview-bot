@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use Domain\Telegram\Constants\TextConstants;
+use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 use stdClass;
 
@@ -13,7 +14,7 @@ class WelcomeNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(stdClass $body)
+    public function __construct(Fluent $body)
     {
         parent::__construct($body);
     }

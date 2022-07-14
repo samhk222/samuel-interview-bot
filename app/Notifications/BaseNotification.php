@@ -8,6 +8,7 @@ use Domain\Telegram\Parsers\Text;
 use Domain\Telegram\Parsers\UserId;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 use stdClass;
 
@@ -15,14 +16,14 @@ class BaseNotification extends Notification
 {
     use Queueable;
 
-    protected stdClass $body;
+    protected Fluent $body;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(stdClass $body)
+    public function __construct(Fluent $body)
     {
         $this->body = $body;
         $this->saveLog($body);
@@ -45,12 +46,13 @@ class BaseNotification extends Notification
             ->content('adasdsd *video* notification!');
     }
 
-    protected function saveLog(stdClass $body)
+    protected function saveLog(Fluent $body)
     {
         EndpointCalls::create([
-            'endpoint' => (new Text($body))(),
-            'user_id' => (new UserId($body))(),
-            'message_id' => (new MessageId($body))()
+            'endpoint' => (new Text($body->body))(),
+            'user_id' => (new UserId($body->body))(),
+            'message_id' => (new MessageId($body->body))(),
+            'uuid' => $body->uuid,
         ]);
     }
 }

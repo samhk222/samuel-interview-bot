@@ -4,6 +4,7 @@
 namespace Domain\Telegram\Actions;
 
 
+use Domain\Helpers\Uuid;
 use Domain\Telegram\Parsers\NotificationClass;
 use Domain\Telegram\Parsers\UserId;
 use Domain\Telegram\Parsers\Text;
@@ -34,6 +35,7 @@ class ParseBody
                 'text' => (new Text($body))(),
                 'notifications' => (new NotificationClass($body))(),
                 'body' => $body,
+                'uuid' => (new Uuid)()
             ]);
         } catch (\Exception $e) {
             throw new Exception($e->getMessage());

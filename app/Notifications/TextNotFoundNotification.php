@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use Domain\Telegram\Parsers\Text;
+use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 use stdClass;
 
@@ -13,7 +14,7 @@ class TextNotFoundNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(stdClass $body)
+    public function __construct(Fluent $body)
     {
         parent::__construct($body);
     }
@@ -21,6 +22,6 @@ class TextNotFoundNotification extends BaseNotification
     public function toTelegram($notifiable)
     {
         return TelegramMessage::create()
-            ->content("Hey, i didn't find *" . (new Text($this->body))() . "* endpoint");
+            ->content("Hey, i didn't find *" . (new Text($this->body->body))() . "* endpoint");
     }
 }

@@ -21,7 +21,7 @@ class TelegramController extends BaseController
         $body = (new ParseBody($request))();
 
         collect($body->notifications)->each(function ($notification) use ($body) {
-            $class = (new $notification($body->body));
+            $class = (new $notification($body));
             Notification::route('telegram', $body->id)->notify($class);
         });
     }

@@ -5,6 +5,7 @@ namespace App\Notifications;
 use Domain\Helpers\Availability;
 use Domain\Helpers\Statistics;
 use Domain\Telegram\Constants\TextConstants;
+use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 use NotificationChannels\Telegram\TelegramPoll;
 use stdClass;
@@ -16,7 +17,7 @@ class HowCoolIsThatNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(stdClass $body)
+    public function __construct(Fluent $body)
     {
         parent::__construct($body);
     }

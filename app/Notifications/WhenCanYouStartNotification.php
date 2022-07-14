@@ -28,7 +28,7 @@ class WhenCanYouStartNotification extends BaseNotification
 
     private function defineMessage()
     {
-        $availability = (new Availability)()->toDayDateTimeString();
+        $availability = (new Availability)()->toDateTimeString();
 
         return "I am currently working, and i wouldn't like to let my current employers down, so I'm asking for two to three weeks to select and train someone to take my place, so, i would be available from **{$availability}**";
     }
