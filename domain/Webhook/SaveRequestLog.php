@@ -25,12 +25,12 @@ class SaveRequestLog
         }
     }
 
-    private function defineHeader(?Request $request)
+    private function defineHeader(?Request $request): string
     {
         return \collect($request->headers->all())->except('cookie')->toJson();
     }
 
-    protected function defineBody(?Request $request)
+    protected function defineBody(?Request $request): bool|string|null
     {
         if ($this->isJson($request->getContent())) {
             return $request->getContent();
@@ -39,7 +39,7 @@ class SaveRequestLog
         return \collect($request->all())->except('password')->toJson();
     }
 
-    private function isJson($string)
+    private function isJson($string): bool
     {
         json_decode($string);
         return json_last_error() === JSON_ERROR_NONE;
