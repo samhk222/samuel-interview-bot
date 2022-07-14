@@ -19,8 +19,16 @@ class UserId
 
     public function __invoke(): string
     {
-        return property_exists($this->body, 'callback_query')
-            ? $this->body->callback_query->from->id
-            : $this->body->message->from->id;
+        if (property_exists($this->body, 'callback_query')) {
+            return $this->body->callback_query->from->id;
+        }
+
+        if (property_exists($this->body, 'message')) {
+            return $this->body->message->from->id;
+        }
+
+        if (property_exists($this->body, 'poll')) {
+            return $this->body->poll->id;
+        }
     }
 }

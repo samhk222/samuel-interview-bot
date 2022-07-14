@@ -3,9 +3,8 @@
 namespace App\Notifications;
 
 use Domain\Helpers\Availability;
-use Domain\Telegram\Constants\TextConstants;
+use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
-use stdClass;
 
 class WhenCanYouStartNotification extends BaseNotification
 {
@@ -14,23 +13,28 @@ class WhenCanYouStartNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(stdClass $body)
+    public function __construct(Fluent $body)
     {
         parent::__construct($body);
     }
 
     public function toTelegram($notifiable)
     {
-        return TelegramMessage::create()
-            ->content($this->defineMessage())
-            ->buttonWithCallback('Back', \json_encode(["action" => TextConstants::get("START")]));
+        $telegram_message = TelegramMessage::create()
+            ->content($this->defineMessage());
+
+        return $this->messageWithDefaultButtons($telegram_message);
     }
 
     private function defineMessage()
     {
-        $availability = (new Availability)()->toDateTimeString();
+        $availability = (new Availability)()->toFormattedDateString();
 
-        return "I am currently working, and i wouldn't like to let my current employers down, so I'm asking for two to three weeks to select and train someone to take my place, so, i would be available from **{$availability}**";
+        return <<<EOL
+📆 Availability
+{$this->HR}
+I'm currently working, and i wouldn't like to let my current employers down, so I'm asking for two to three weeks to select and train someone to take my place, so, i would be available from **{$availability}**
+EOL;
     }
 
 }

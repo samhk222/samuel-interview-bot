@@ -2,6 +2,7 @@
 
 namespace Domain\Telegram\Parsers;
 
+use Domain\Telegram\Constants\TextConstants;
 use stdClass;
 
 class Text
@@ -27,6 +28,10 @@ class Text
         if (\property_exists($this->body, 'callback_query')
             && \property_exists($this->body->callback_query, 'data')) {
             return \json_decode($this->body->callback_query->data)->action;
+        }
+
+        if (\property_exists($this->body, 'poll')) {
+            return TextConstants::get('POLL_VOTE');
         }
     }
 }

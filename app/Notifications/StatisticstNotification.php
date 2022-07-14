@@ -23,9 +23,10 @@ class StatisticstNotification extends BaseNotification
 
     public function toTelegram($notifiable)
     {
-        return TelegramMessage::create()
-            ->content($this->defineMessage())
-            ->buttonWithCallback('Back', \json_encode(["action" => TextConstants::get("START")]));
+        $telegram_message = TelegramMessage::create()
+            ->content($this->defineMessage());
+
+        return $this->messageWithDefaultButtons($telegram_message);
     }
 
     private function defineMessage()
@@ -34,7 +35,7 @@ class StatisticstNotification extends BaseNotification
 
         return <<<EOL
 🤖 Statistics
-=================================
+{$this->HR}
 Total endpoint calls: *{$statistics->total_api_calls}*
 
 How many endpoints this bot has: *{$statistics->total_endpoints}*

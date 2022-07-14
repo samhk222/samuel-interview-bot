@@ -5,7 +5,7 @@ namespace App\Notifications;
 use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 
-class WelcomeNotification extends BaseNotification
+class CanYouShowMeSomeWorkNotification extends BaseNotification
 {
     /**
      * Create a new notification instance.
@@ -20,7 +20,7 @@ class WelcomeNotification extends BaseNotification
     public function toTelegram($notifiable)
     {
         $telegram_message = TelegramMessage::create()
-            ->content('Olá, me chamo Samuel, tenho 40 anos, sou programador web a 20 e sou de [Belo Horizonte](https://pt.wikipedia.org/wiki/Belo_Horizonte) , Brasil');
+            ->content(self::class);
 
         return $this->messageWithDefaultButtons($telegram_message);
     }

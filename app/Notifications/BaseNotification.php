@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\EndpointCalls;
+use Domain\Telegram\Constants\TextConstants;
 use Domain\Telegram\Parsers\MessageId;
 use Domain\Telegram\Parsers\Text;
 use Domain\Telegram\Parsers\UserId;
@@ -10,13 +11,14 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
-use stdClass;
 
 class BaseNotification extends Notification
 {
     use Queueable;
 
     protected Fluent $body;
+
+    protected $HR = "=================================";
 
     /**
      * Create a new notification instance.
@@ -54,5 +56,29 @@ class BaseNotification extends Notification
             'message_id' => (new MessageId($body->body))(),
             'uuid' => $body->uuid,
         ]);
+    }
+
+    public function getBody(): Fluent
+    {
+        return $this->body;
+    }
+
+    protected function messageWithDefaultButtons($message)
+    {
+        return $message
+            ->buttonWithCallback('Who am i ?', \json_encode(["action" => TextConstants::get("WHO-AM-I")]))
+            ->buttonWithCallback('Where do i live  ?', \json_encode(["action" => TextConstants::get("BELO-HORIZONTE")]))
+            ->buttonWithCallback('Can you work remotely  ?',
+                \json_encode(["action" => TextConstants::get("CAN-YOU-WORK-REMOTELY")]))
+            ->buttonWithCallback('How is your English level ?',
+                \json_encode(["action" => TextConstants::get("ENGLISH-LEVEL")]))
+            ->buttonWithCallback('My skills', \json_encode(["action" => TextConstants::get("SKILLS")]))
+            ->buttonWithCallback('Can you show me some work ?', \json_encode(["action" => TextConstants::get("CAN-YOU-SHOW-ME")]))
+            ->buttonWithCallback('When can you start ?',
+                \json_encode(["action" => TextConstants::get("AVAILABILITY")]))
+            ->buttonWithCallback('How cool is this bot ? Please vote!',
+                \json_encode(["action" => TextConstants::get("HOW_COOL_IS_THAT")]))
+            ->buttonWithCallback('Bot statistics',
+                \json_encode(["action" => TextConstants::get("STATISTICS")]));
     }
 }

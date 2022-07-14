@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         NotificationSent::class => [
-            TelegramMessageSent::class
+//            TelegramMessageSent::class
         ],
     ];
 

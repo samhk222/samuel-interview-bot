@@ -5,7 +5,6 @@ namespace App\Notifications;
 use Domain\Telegram\Parsers\Text;
 use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
-use stdClass;
 
 class TextNotFoundNotification extends BaseNotification
 {
@@ -21,7 +20,9 @@ class TextNotFoundNotification extends BaseNotification
 
     public function toTelegram($notifiable)
     {
-        return TelegramMessage::create()
+        $telegram_message = TelegramMessage::create()
             ->content("Hey, i didn't find *" . (new Text($this->body->body))() . "* endpoint");
+
+        return $this->messageWithDefaultButtons($telegram_message);
     }
 }

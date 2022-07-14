@@ -24,9 +24,10 @@ class HowCoolIsThatNotification extends BaseNotification
 
     public function toTelegram($notifiable)
     {
-        return TelegramPoll::create()
+        $telegram_poll = TelegramPoll::create()
             ->question("Hey, how cool is this bot ?")
-            ->choices(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'])
-            ->buttonWithCallback('Back', \json_encode(["action" => TextConstants::get("START")]));
+            ->choices(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+
+        return $this->messageWithDefaultButtons($telegram_poll);
     }
 }
