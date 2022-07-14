@@ -33,7 +33,7 @@ class WhenCanYouStartNotification extends BaseNotification
         return <<<EOL
 📆 Availability
 {$this->HR}
-I'm currently working, and i wouldn't like to let my current employers down, so I'm asking for two to three weeks to select and train someone to take my place, so, i would be available from **{$availability}**
+I'm currently working, and i wouldn't like to let my current employers down, so I'm asking for two to three weeks to interview and train someone to take my place, so, i would be available from **{$availability}**
 EOL;
     }
 

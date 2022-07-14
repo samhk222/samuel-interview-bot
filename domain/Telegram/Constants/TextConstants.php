@@ -12,6 +12,7 @@ class TextConstants
         'WHO-AM-I' => 'who-am-i',
         'BELO-HORIZONTE' => 'belo-horizonte',
         'CAN-YOU-WORK-REMOTELY' => 'can-you-work-remotely',
+        'CONTACT_INFORMATION' => 'contact',
         'ENGLISH-LEVEL' => 'english-level',
         'CAN-YOU-SHOW-ME' => 'can-you-show-me',
         'AVAILABILITY' => 'availability',

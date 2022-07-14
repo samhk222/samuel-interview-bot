@@ -2,8 +2,15 @@
 
 namespace Domain\Telegram\Parsers;
 
+use App\Notifications\BeloHorizontePicture01Notification;
+use App\Notifications\BeloHorizontePicture02Notification;
 use App\Notifications\CanYouShowMeSomeWorkNotification;
 use App\Notifications\CanYouWorkRemotelyNotification;
+use App\Notifications\ContactDisclaimerNotification;
+use App\Notifications\ContactInformationCardNotification;
+use App\Notifications\EnglishLevelNotification;
+use App\Notifications\EnglishLevelOnlineTestNotification;
+use App\Notifications\EnglishLevelRecordingNotification;
 use App\Notifications\HowCoolIsThatNotification;
 use App\Notifications\MySkillsNotification;
 use App\Notifications\StatisticstNotification;
@@ -36,8 +43,20 @@ class NotificationClass
         switch ($text) {
             case TextConstants::get("WHO-AM-I"):
                 return [WhoAmINotification::class,];
+            case TextConstants::get("CONTACT_INFORMATION"):
+                return [ContactDisclaimerNotification::class, ContactInformationCardNotification::class,];
             case TextConstants::get("BELO-HORIZONTE"):
-                return [WhereDoILiveNotification::class,];
+                return [
+                    BeloHorizontePicture01Notification::class,
+                    BeloHorizontePicture02Notification::class,
+                    WhereDoILiveNotification::class,
+                ];
+            case TextConstants::get("ENGLISH-LEVEL"):
+                return [
+                    EnglishLevelOnlineTestNotification::class,
+                    EnglishLevelRecordingNotification::class,
+                    EnglishLevelNotification::class,
+                ];
             case TextConstants::get("CAN-YOU-WORK-REMOTELY"):
                 return [CanYouWorkRemotelyNotification::class,];
             case TextConstants::get("CAN-YOU-SHOW-ME"):

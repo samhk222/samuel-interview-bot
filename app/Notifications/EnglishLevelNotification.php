@@ -2,14 +2,10 @@
 
 namespace App\Notifications;
 
-use Domain\Helpers\Availability;
-use Domain\Helpers\Statistics;
-use Domain\Telegram\Constants\TextConstants;
 use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
-use stdClass;
 
-class StatisticstNotification extends BaseNotification
+class EnglishLevelNotification extends BaseNotification
 {
     /**
      * Create a new notification instance.
@@ -24,24 +20,21 @@ class StatisticstNotification extends BaseNotification
     public function toTelegram($notifiable)
     {
         $telegram_message = TelegramMessage::create()
-            ->content($this->defineMessage());
+            ->content($this->defineContent());
 
         return $this->messageWithDefaultButtons($telegram_message);
     }
 
-    private function defineMessage()
+    private function defineContent()
     {
-        $statistics = (new Statistics)();
-
         return <<<EOL
-🤖 Statistics
+💬 English level
 {$this->HR}
-Total endpoint calls: *{$statistics->total_api_calls}*
+I finished an online English test last month, where I scored **89%**.
 
-How many endpoints this bot has: *{$statistics->total_endpoints}*
+I am available for tests, video calls, voice calls, etc.
 
-How many users tryed this bot : *{$statistics->total_users_that_used_this_bot}*
-
+I am also attaching an excerpt where I introduce myself
 EOL;
     }
 }

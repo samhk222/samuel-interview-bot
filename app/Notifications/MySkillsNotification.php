@@ -34,7 +34,6 @@ class MySkillsNotification extends BaseNotification
 
 *💻 Programing skills*
 {$this->HR}
-
 - PHP 8 {$this->stars(5)}
 - Laravel {$this->stars(5)}
 - docker {$this->stars(5)}

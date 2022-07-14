@@ -78,6 +78,8 @@ class BaseNotification extends Notification
                 \json_encode(["action" => TextConstants::get("AVAILABILITY")]))
             ->buttonWithCallback('How cool is this bot ? Please vote!',
                 \json_encode(["action" => TextConstants::get("HOW_COOL_IS_THAT")]))
+            ->buttonWithCallback('How can i contact you ?',
+                \json_encode(["action" => TextConstants::get("CONTACT_INFORMATION")]))
             ->buttonWithCallback('Bot statistics',
                 \json_encode(["action" => TextConstants::get("STATISTICS")]));
     }

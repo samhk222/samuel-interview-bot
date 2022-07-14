@@ -1,3 +1,5 @@
-*
 !public/
+!pictures
+!recordings
 !.gitignore
+

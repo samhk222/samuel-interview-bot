@@ -2,6 +2,7 @@
 
 use Domain\Telegram\Actions\GenerateEndpointUrl;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
