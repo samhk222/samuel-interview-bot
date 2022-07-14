@@ -19,9 +19,14 @@ class Text
 
     public function __invoke(): string|null
     {
-        return property_exists($this->body, 'message')
-        && property_exists($this->body->message, 'text')
-            ? $this->body->message->text
-            : null;
+        if (property_exists($this->body, 'message')
+            && property_exists($this->body->message, 'text')) {
+            return $this->body->message->text;
+        }
+
+        if (\property_exists($this->body, 'callback_query')
+            && \property_exists($this->body->callback_query, 'data')) {
+            return \json_decode($this->body->callback_query->data)->action;
+        }
     }
 }
