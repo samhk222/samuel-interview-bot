@@ -15,6 +15,7 @@ class CaddyController extends BaseController
         $authorizedDomains = [
             'laravel.test',
             'www.laravel.test',
+            '54.186.108.218'
         ];
 
         if (in_array($request->query('domain'), $authorizedDomains)) {
