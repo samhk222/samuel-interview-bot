@@ -19,20 +19,4 @@ class Webhooks extends Model
     protected $dates = ['dt_chamada'];
 
     public $timestamps = false;
-
-    /*================================================================================================================*/
-    /*==================== VALIDATION =============================================================================*/
-    /*================================================================================================================*/
-    /**
-     * @return array
-     */
-    public static function validationArray()
-    {
-        return [
-            'descricao' => 'required',
-            'categoria_id' => 'nullable|exists:categorias,id',
-            'entrada' => 'required|in:0,1',
-            'scheme' => 'in:AGENDA,FINANCEIRO'
-        ];
-    }
 }
