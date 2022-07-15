@@ -29,9 +29,9 @@ class ContactDisclaimerNotification extends BaseNotification
         return <<<EOL
 📩 Contact Information
 {$this->HR}
-**E-mail:** cadastros@samuca.com
-**Whatsapp:** +5531984498313
-**Telegram:** [https://t.me/samhk222](https://t.me/samhk222)
+*E-mail:* cadastros@samuca.com
+*Whatsapp:* +5531984498313
+*Telegram:* [https://t.me/samhk222](https://t.me/samhk222)
 
 Or you can click on the card bellow to send me an direct message
 EOL;

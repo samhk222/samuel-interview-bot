@@ -20,8 +20,15 @@ class WelcomeNotification extends BaseNotification
     public function toTelegram($notifiable)
     {
         $telegram_message = TelegramMessage::create()
-            ->content('Olá, me chamo Samuel, tenho 40 anos, sou programador web a 20 e sou de [Belo Horizonte](https://pt.wikipedia.org/wiki/Belo_Horizonte) , Brasil');
+            ->content($this->defineContent());
 
         return $this->messageWithDefaultButtons($telegram_message);
+    }
+
+    private function defineContent()
+    {
+        return <<<EOL
+Hi! Welcome to an unusual way to show a little about myself and what I can do! Below you will see several clickable buttons (navigation can be omitted by clicking the options menu, or typing /preferences.
+EOL;
     }
 }

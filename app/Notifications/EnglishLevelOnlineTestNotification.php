@@ -21,7 +21,7 @@ class EnglishLevelOnlineTestNotification extends BaseNotification
     public function toTelegram($notifiable)
     {
         return TelegramFile::create()
-            ->content("**Picture 01** online english test")
+            ->content("*Picture 01* online english test")
             ->file(Storage::disk('local')->path("pictures/online-english-test.png"), 'photo');
     }
 }

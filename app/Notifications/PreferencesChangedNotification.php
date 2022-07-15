@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use App\Models\User;
 use Domain\Telegram\Parsers\UserId;
+use Domain\User\Actions\SwapShowMenusPreferences;
 use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 
@@ -29,7 +30,9 @@ class PreferencesChangedNotification extends BaseNotification
 
     private function defineMessage()
     {
-        $show_desc = $this->user->show_menus ? "No" : "Yes";
+        (new SwapShowMenusPreferences($this->user))();
+
+        $show_desc = $this->user->show_menus ? "Yes" : "No";
         return <<<EOL
 ↙️ Preferences
 {$this->HR}

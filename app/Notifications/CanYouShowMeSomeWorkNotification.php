@@ -30,7 +30,7 @@ class CanYouShowMeSomeWorkNotification extends BaseNotification
         return <<<EOL
 👷 Show me some code
 {$this->HR}
-My repositories are mostly private, but I'll share the latest tests I've done
+My repositories are *mostly private*, but I'll share the latest tests I've done
 
 I am also available to take exams or placement tests to show my knowledge. I actually like doing these tests 😊
 

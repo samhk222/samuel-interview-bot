@@ -42,6 +42,9 @@ How many endpoints this bot has: *{$statistics->total_endpoints}*
 
 How many users tryed this bot : *{$statistics->total_users_that_used_this_bot}*
 
+🤖 You can see the code of this bot here
+{$this->HR}
+[github](https://github.com/samhk222/samuel-interview-bot)
 EOL;
     }
 }

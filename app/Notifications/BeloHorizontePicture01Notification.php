@@ -21,7 +21,7 @@ class BeloHorizontePicture01Notification extends BaseNotification
     public function toTelegram($notifiable)
     {
         return TelegramFile::create()
-            ->content("**Picture 01** of Belo Horizonte")
+            ->content("*Picture 01* of Belo Horizonte")
             ->file(Storage::disk('local')->path("pictures/bh01.jpg"), 'photo');
     }
 }

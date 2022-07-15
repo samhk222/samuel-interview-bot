@@ -30,7 +30,7 @@ class MySkillsNotification extends BaseNotification
     private function defineContent()
     {
         return <<<EOL
-**During these 20 years of programming for the web I acquired a vast knowledge in several programming languages, servers, deploys, and tools. Only the most relevant ones are being listed**
+*During these 20 years of programming for the web I acquired a vast knowledge in several programming languages, servers, deploys, and tools. Only the most relevant ones are being listed*
 
 *💻 Programing skills*
 {$this->HR}

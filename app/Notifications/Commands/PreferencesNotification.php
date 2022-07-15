@@ -25,7 +25,7 @@ class PreferencesNotification extends BaseNotification
     {
         return TelegramMessage::create()
             ->content($this->defineContent())
-            ->buttonWithCallback('Toggle menu buttons after every notification',
+            ->buttonWithCallback('Toggle show menu buttons after every notification',
                 \json_encode(["action" => TextConstants::get("TOGGLE-BUTTON-OPTIONS")]));
     }
 

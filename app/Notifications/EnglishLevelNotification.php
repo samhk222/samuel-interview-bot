@@ -30,7 +30,7 @@ class EnglishLevelNotification extends BaseNotification
         return <<<EOL
 💬 English level
 {$this->HR}
-I finished an online English test last month, where I scored **89%**.
+I finished an online English test last month, where I scored *89%*.
 
 I am available for tests, video calls, voice calls, etc.
 

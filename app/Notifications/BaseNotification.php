@@ -81,7 +81,7 @@ class BaseNotification extends Notification
             ->buttonWithCallback('How is your English level ?',
                 \json_encode(["action" => TextConstants::get("ENGLISH-LEVEL")]))
             ->buttonWithCallback('My skills', \json_encode(["action" => TextConstants::get("SKILLS")]))
-            ->buttonWithCallback('Can you show me some work ?',
+            ->buttonWithCallback('Can you show me some code ?',
                 \json_encode(["action" => TextConstants::get("CAN-YOU-SHOW-ME")]))
             ->buttonWithCallback('When can you start ?',
                 \json_encode(["action" => TextConstants::get("AVAILABILITY")]))

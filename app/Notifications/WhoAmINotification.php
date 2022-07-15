@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use Domain\User\Actions\SwapShowMenusPreferences;
 use Illuminate\Support\Fluent;
 use NotificationChannels\Telegram\TelegramMessage;
 
@@ -32,7 +33,7 @@ I'm a fullstack web programmer with 20 years, experience in the telecommunicatio
 
 I have been working for five years as a remote programmer with the Laravel stack + back in a fintech, where I am the only one responsible for the development, maintenance and support of 3 large systems, where I do gather requirements, meeting with the PO's, development, testing e deployments, in another words, all the life cycle of a project. And because it is a fintech, all compliance and integration between various financial institutions.
 
-You can check my resume, at **printed resume** menu, where I summarize a few of my activities
+You can check my resume, at *printed resume* menu, where I summarize a few of my activities
 EOL;
     }
 }
