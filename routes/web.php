@@ -23,4 +23,3 @@ Route::get('/', function () {
 
     return view('welcome', compact('url'));
 });
-Route::get('/caddy-check', [CaddyController::class, 'check']);

@@ -2,8 +2,7 @@
 
 namespace Domain\Webhook;
 
-
-use App\Repositories\WebhooksRepository;
+use App\Models\Webhooks;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -12,7 +11,7 @@ class SaveRequestLog
     public function __invoke(?Request $request)
     {
         try {
-            \App\Models\Webhooks::create([
+            Webhooks::create([
                 'method' => $request->getMethod(),
                 'header' => $this->defineHeader($request),
                 'body' => $this->defineBody($request),

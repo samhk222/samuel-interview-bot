@@ -8,6 +8,8 @@ class TextConstants
 {
     const CONSTANTS = [
         "START" => "/start",
+        "BACK" => "back-to-menu",
+        "PREFERENCES" => "/preferences",
         'SKILLS' => 'my-skills',
         'WHO-AM-I' => 'who-am-i',
         'BELO-HORIZONTE' => 'belo-horizonte',
@@ -19,6 +21,8 @@ class TextConstants
         'STATISTICS' => 'statistics',
         'HOW_COOL_IS_THAT' => 'how-cool-is-that',
         'POLL_VOTE' => 'poll-vote',
+        'RESUME' => 'resume',
+        'TOGGLE-BUTTON-OPTIONS' => 'toggle-button-options',
     ];
 
     public static function get(string $which)

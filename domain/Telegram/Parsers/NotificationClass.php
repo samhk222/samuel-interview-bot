@@ -2,10 +2,12 @@
 
 namespace Domain\Telegram\Parsers;
 
+use App\Notifications\AttachResumeNotification;
 use App\Notifications\BeloHorizontePicture01Notification;
 use App\Notifications\BeloHorizontePicture02Notification;
 use App\Notifications\CanYouShowMeSomeWorkNotification;
 use App\Notifications\CanYouWorkRemotelyNotification;
+use App\Notifications\Commands\PreferencesNotification;
 use App\Notifications\ContactDisclaimerNotification;
 use App\Notifications\ContactInformationCardNotification;
 use App\Notifications\EnglishLevelNotification;
@@ -13,9 +15,10 @@ use App\Notifications\EnglishLevelOnlineTestNotification;
 use App\Notifications\EnglishLevelRecordingNotification;
 use App\Notifications\HowCoolIsThatNotification;
 use App\Notifications\MySkillsNotification;
+use App\Notifications\PreferencesChangedNotification;
+use App\Notifications\ResumeDisclaimerNotification;
 use App\Notifications\StatisticstNotification;
 use App\Notifications\TextNotFoundNotification;
-use App\Notifications\VotedInNotification;
 use App\Notifications\WelcomeNotification;
 use App\Notifications\WhenCanYouStartNotification;
 use App\Notifications\WhereDoILiveNotification;
@@ -41,10 +44,15 @@ class NotificationClass
         $text = (new Text($this->body))();
 
         switch ($text) {
+            case TextConstants::get("TOGGLE-BUTTON-OPTIONS"):
+                // User just asked to toggle preferentes
+                return [PreferencesChangedNotification::class, WelcomeNotification::class];
+            case TextConstants::get("PREFERENCES"):
+                return [PreferencesNotification::class];
             case TextConstants::get("WHO-AM-I"):
-                return [WhoAmINotification::class,];
+                return [WhoAmINotification::class];
             case TextConstants::get("CONTACT_INFORMATION"):
-                return [ContactDisclaimerNotification::class, ContactInformationCardNotification::class,];
+                return [ContactDisclaimerNotification::class, ContactInformationCardNotification::class];
             case TextConstants::get("BELO-HORIZONTE"):
                 return [
                     BeloHorizontePicture01Notification::class,
@@ -58,11 +66,16 @@ class NotificationClass
                     EnglishLevelNotification::class,
                 ];
             case TextConstants::get("CAN-YOU-WORK-REMOTELY"):
-                return [CanYouWorkRemotelyNotification::class,];
+                return [CanYouWorkRemotelyNotification::class];
+            case TextConstants::get("RESUME"):
+                return [
+                    ResumeDisclaimerNotification::class,
+                    AttachResumeNotification::class
+                ];
             case TextConstants::get("CAN-YOU-SHOW-ME"):
-                return [CanYouShowMeSomeWorkNotification::class,];
+                return [CanYouShowMeSomeWorkNotification::class];
             case TextConstants::get("START"):
-                return [WelcomeNotification::class,];
+                return [WelcomeNotification::class];
             case TextConstants::get("SKILLS"):
                 return [MySkillsNotification::class];
             case TextConstants::get("AVAILABILITY"):
