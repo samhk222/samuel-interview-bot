@@ -81,6 +81,7 @@ class NotificationClass
             case TextConstants::get("AVAILABILITY"):
                 return [WhenCanYouStartNotification::class];
             case TextConstants::get("STATISTICS"):
+            case TextConstants::get("STATISTICS-FROM-MENU"):
                 return [StatisticstNotification::class];
             case TextConstants::get("POLL_VOTE"):
                 // A poll doesn't have an valid user
