@@ -10,7 +10,7 @@ class TextConstants
         "START" => "/start",
         "BACK" => "back-to-menu",
         "PREFERENCES" => "/preferences",
-        "STATISTICS-FROM-MENU" => "/preferences",
+        "STATISTICS-FROM-MENU" => "/statistics",
         'SKILLS' => 'my-skills',
         'WHO-AM-I' => 'who-am-i',
         'BELO-HORIZONTE' => 'belo-horizonte',
